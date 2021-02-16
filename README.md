@@ -12,7 +12,8 @@ UNATTENDED=yes make install-deps install-ext-deps build
 ## install and build the naive API fuzzer
 
 ```
-export LD_LIBRARY_PATH=/home/ayourtch/vpp/build-root/install-vpp-native/vpp/lib/
+export LD_LIBRARY_PATH=${HOME}/vpp/build-root/install-vpp-native/vpp/lib/
+export VPP_LIB_DIR=${HOME}/vpp/build-root/install-vpp-native/vpp/lib/
 ```
 
 ## start VPP
