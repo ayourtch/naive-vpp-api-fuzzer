@@ -14,8 +14,16 @@ jobs:
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+      - name: get and build the VPP
+        run: |
+          git clone https://git.fd.io/vpp/
+          cd vpp
+          UNATTENDED=y make install-dep build-release
       - name: Build the code
         uses: actions-rs/cargo@v1
+	env:
+          LD_LIBRARY_PATH: ~/vpp/build-root/install-vpp-native/vpp/lib/
+          VPP_LIB_DIR: ~/vpp/build-root/install-vpp-native/vpp/lib/
         with:
           command: build
           args: --release
